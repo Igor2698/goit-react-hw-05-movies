@@ -15,7 +15,9 @@ export const Cast = () => {
         console.log(error);
       }
     }
+  
 
+    
     getCasts();
   }, [id]);
 
