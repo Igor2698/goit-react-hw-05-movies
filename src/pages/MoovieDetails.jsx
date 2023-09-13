@@ -2,12 +2,18 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { getMoovieByID } from 'api';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
+import { ImagePendingView } from 'components/Loader';
+
+import TextErrorView from 'components/TextErrorView';
 
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
 
-export const MoovieDetails = () => {
+const MoovieDetails = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const location = useLocation();
+
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
   const [moovie, setMoovie] = useState();
@@ -18,10 +24,13 @@ export const MoovieDetails = () => {
   useEffect(() => {
     async function getOneMoovie() {
       try {
+        setLoading(true);
         const response = await getMoovieByID(id);
 
         setMoovie(response);
+        setLoading(false);
       } catch (error) {
+        setError(error);
         navigate('/*', { replace: true });
         console.log(error);
       }
@@ -32,6 +41,9 @@ export const MoovieDetails = () => {
 
   return (
     <>
+      {error && <TextErrorView message={error.message} />}
+
+      {loading && <ImagePendingView />}
       <Link to={backLinkLocationRef.current}>Back to products</Link>
       {moovie && (
         <>
@@ -68,3 +80,5 @@ export const MoovieDetails = () => {
     </>
   );
 };
+
+export default MoovieDetails;

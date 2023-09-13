@@ -1,42 +1,54 @@
 
-import { useSearchParams, Link, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoovieByName } from 'api';
 import { Form } from '../components/Form'
+import { ImagePendingView } from 'components/Loader';
+import { MoovieList } from 'components/MoovieList/MoovieList';
+import TextErrorView from 'components/TextErrorView';
 
-export const Moovies = () => {
-    const location = useLocation()
+
+
+
+const Moovies = () => {
+
+    const [loading, setLoading] = useState(false);
+
+    const [error, setError] = useState(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [moovie, setMoovie] = useState(searchParams.get('query') ?? '');
+
     const [newMoovies, setNewMoovies] = useState()
     const query = searchParams.get('query') ?? ''
 
 
 
 
-    const updateQueryString = evt => {
-        evt.preventDefault()
-        if (moovie === '') {
+    const updateQueryString = moovie => {
+
+        const trimmedMoovie = moovie.trim()
+
+        if (trimmedMoovie === '') {
             return setSearchParams({});
         }
-        setSearchParams({ query: moovie });
+        setSearchParams({ query: trimmedMoovie });
     };
 
-    const handleMoovieChange = evt => {
-        setMoovie(evt.target.value);
-    };
+
 
     useEffect(() => {
 
 
         async function getMoovies() {
             try {
+                setLoading(true);
                 const response = await getMoovieByName(query);
                 setNewMoovies(response.results)
+                setLoading(false)
 
 
             } catch (error) {
+                setError(error)
 
                 console.log(error);
             }
@@ -50,16 +62,21 @@ export const Moovies = () => {
 
 
 
-    return (<>
-        <Form updateQueryString={updateQueryString} moovie={moovie} handleMoovieChange={handleMoovieChange} />
+    return (
+        <>
+            {error && <TextErrorView message={error.message} />}
+            {loading && <ImagePendingView />}
+            <Form updateQueryString={updateQueryString} />
+            {newMoovies && <MoovieList newMoovies={newMoovies} />}
 
 
-        {newMoovies && <ul>
-            {newMoovies.map(moovie => <li key={moovie.id}><Link to={`/moovies/${moovie.id}`} state={{ from: location }} >{moovie.title}</Link></li>)}
-        </ul>}
 
-
-
-    </>
+        </>
     );
 };
+
+
+export default Moovies
+
+
+

@@ -2,7 +2,7 @@ import css from './Error.module.css';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
-export const NotFound = () => {
+const NotFound = () => {
   useEffect(() => {
     document.body.classList.add(css.bodyBackground);
 
@@ -27,3 +27,5 @@ export const NotFound = () => {
     </div>
   );
 };
+
+export default NotFound;

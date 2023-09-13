@@ -1,23 +1,27 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
-import { NotFound } from 'pages/Error/NotFound';
-import { Home } from 'pages/Home';
-import { Moovies } from 'pages/Moovies';
-import { MoovieDetails } from './MoovieDetails';
-import { Cast } from './Cast';
-import { Reviews } from './Review';
+import { lazy, Suspense } from 'react';
+import { Layout } from './Layout/Layout';
+
+const MoovieDetails = lazy(() => import('pages/MoovieDetails'));
+const Moovies = lazy(() => import('pages/Moovies'));
+const NotFound = lazy(() => import('pages/Error/NotFound'));
+const Cast = lazy(() => import('./Cast'));
+const Reviews = lazy(() => import('./Review'));
+const Home = lazy(() => import('pages/Home/Home'));
 export const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="moovies" element={<Moovies />} />
-        <Route path="moovies/:id" element={<MoovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
+    <Suspense fallback={<div>Loading...</div>}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="moovies" element={<Moovies />} />
+          <Route path="moovies/:id" element={<MoovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
         </Route>
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
   );
 };
