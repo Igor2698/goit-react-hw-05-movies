@@ -41,11 +41,33 @@ export const getMoovieByName = async mooveId => {
     }
 }
 
+
+
+
 export const getCast = async mooveId => {
 
 
     try {
         const response = await axios.get(`movie/${mooveId}/credits`, {
+            params: {
+                api_key: apiKey,
+                page: 1,
+
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Ошибка при выполнении запроса:', error);
+        throw error;
+    }
+}
+
+
+export const getReviews = async mooveId => {
+
+
+    try {
+        const response = await axios.get(`movie/${mooveId}/reviews`, {
             params: {
                 api_key: apiKey,
 

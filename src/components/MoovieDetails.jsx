@@ -56,7 +56,7 @@ export const MoovieDetails = () => {
           <Link to="cast">Cast</Link>
         </li>
         <li>
-          <Link>Reviews</Link>
+          <Link to="reviews">Reviews</Link>
         </li>
       </ul>
       <Outlet />

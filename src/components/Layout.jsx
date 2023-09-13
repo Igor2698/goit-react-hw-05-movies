@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 // import styled from 'styled-components';
 
 // const StyledLink = styled(NavLink)`
@@ -10,6 +10,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 // `;
 
 export const Layout = () => {
+  // const location = useLocation;
   return (
     <>
       <header>
