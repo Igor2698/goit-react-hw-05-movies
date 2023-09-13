@@ -13,7 +13,7 @@ export const Cast = () => {
     async function getCasts() {
       try {
         const response = await getCast(id);
-        console.log(response);
+      
         setActors(response.cast);
       } catch (error) {
         console.log(error);
@@ -26,7 +26,7 @@ export const Cast = () => {
   return (
     actors && (
       <ul>
-        {actors.map(actor => {
+        {actors.slice(0, 30).map(actor => {
           return (
             <li key={actor.id}>
               <p>Character: {actor.character}</p>

@@ -1,9 +1,12 @@
-import css from './Moovies.module.css'
-import { useSearchParams, Link } from 'react-router-dom';
+
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoovieByName } from 'api';
+import { Form } from '../components/Form'
 
 export const Moovies = () => {
+    const location = useLocation()
+
     const [searchParams, setSearchParams] = useSearchParams();
     const [moovie, setMoovie] = useState(searchParams.get('query') ?? '');
     const [newMoovies, setNewMoovies] = useState()
@@ -42,20 +45,17 @@ export const Moovies = () => {
         getMoovies();
     }, [query])
 
-    console.log(newMoovies);
+
 
 
 
 
     return (<>
-        <form onSubmit={updateQueryString}>
-            <input type="text" name="moovie" value={moovie} onChange={handleMoovieChange} />
-            <button type="submit" className={css.button}></button>
-        </form>
+        <Form updateQueryString={updateQueryString} moovie={moovie} handleMoovieChange={handleMoovieChange} />
 
 
         {newMoovies && <ul>
-            {newMoovies.map(moovie => <li key={moovie.id}><Link to={`/moovies/${moovie.id}`} >{moovie.title}</Link></li>)}
+            {newMoovies.map(moovie => <li key={moovie.id}><Link to={`/moovies/${moovie.id}`} state={{ from: location }} >{moovie.title}</Link></li>)}
         </ul>}
 
 

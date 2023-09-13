@@ -1,11 +1,15 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 import { getMoovieByID } from 'api';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
 
 const defaultImg =
   'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+
 export const MoovieDetails = () => {
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
+
   const [moovie, setMoovie] = useState();
   const { id } = useParams();
 
@@ -28,6 +32,7 @@ export const MoovieDetails = () => {
 
   return (
     <>
+      <Link to={backLinkLocationRef.current}>Back to products</Link>
       {moovie && (
         <>
           <img
@@ -36,7 +41,7 @@ export const MoovieDetails = () => {
                 ? `https://image.tmdb.org/t/p/w500/${moovie.poster_path}`
                 : defaultImg
             }
-            width="250"
+            width="400"
             alt="poster"
           />
           <h2>{moovie.title}</h2>

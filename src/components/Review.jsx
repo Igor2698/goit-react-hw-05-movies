@@ -17,7 +17,7 @@ export const Reviews = () => {
 
     getInfo();
   }, [id]);
-  console.log(reviews);
+
 
   return (
     reviews &&
