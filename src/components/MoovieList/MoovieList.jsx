@@ -9,7 +9,6 @@ export const MoovieList = ({ newMoovies }) => {
 
   return (
     <>
-      
       <ul className={css.listMoovie}>
         {newMoovies.map(moovie => (
           <Link
@@ -17,7 +16,7 @@ export const MoovieList = ({ newMoovies }) => {
             to={`/moovies/${moovie.id}`}
             state={{ from: location }}
           >
-            <li>
+            <li className={css.moovieItem}>
               <img
                 className={css.moovieListImg}
                 src={

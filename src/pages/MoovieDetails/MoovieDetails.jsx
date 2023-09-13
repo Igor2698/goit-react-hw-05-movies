@@ -41,8 +41,6 @@ const MoovieDetails = () => {
     getOneMoovie();
   }, [id, navigate]);
 
-  console.log(moovie);
-
   return (
     <div className={css.moovieDetailsWrapper}>
       {error && <TextErrorView message={error.message} />}

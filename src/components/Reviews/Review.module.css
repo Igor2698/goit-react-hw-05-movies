@@ -8,18 +8,30 @@
 }
 
 .author {
-    font-size: 20px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 .reviewItem {
-  border: 1px solid #ccc; /* Граница */
-  background-color: black; /* Фон */
-  padding: 10px; /* Внутренний отступ для контента */
+  border: 1px solid #ccc;
+  background-color: black;
+  padding: 10px;
   margin-bottom: 10px;
   transition: background-color 1s ease-in-out;
 }
 
 .reviewItem:hover {
   background-color: #1b2b30;
+}
+
+.errorReviews {
+  padding: 15px;
+  background: linear-gradient(45deg, #000, #333, #000);
+  border: 1px solid #ebccd1;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 500px;
+  color: aliceblue;
+  cursor: not-allowed;
+  font-size: 24px;
 }

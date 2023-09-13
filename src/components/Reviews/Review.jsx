@@ -42,7 +42,7 @@ const Reviews = () => {
           </ul>
         ))
       ) : (
-        <p>Did not find any reviews</p>
+        <p className={css.errorReviews}>Did not find any reviews</p>
       )}
     </>
   );

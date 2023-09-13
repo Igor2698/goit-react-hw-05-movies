@@ -14,9 +14,9 @@ export const Form = ({ updateQueryString }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={css.form} onSubmit={handleSubmit}>
       <input
-        placeholder="enter movie title"
+        placeholder="Enter movie title"
         type="text"
         name="moovie"
         onChange={handleMoovieChange}
