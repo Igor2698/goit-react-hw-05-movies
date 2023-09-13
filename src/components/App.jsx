@@ -2,8 +2,10 @@ import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Layout } from './Layout/Layout';
 
-const MoovieDetails = lazy(() => import('pages/MoovieDetails'));
-const Moovies = lazy(() => import('pages/Moovies'));
+const MoovieDetails = lazy(() =>
+  import('pages/MoovieDetails/MoovieDetails')
+);
+const Moovies = lazy(() => import('pages/Moovies/Moovies'));
 const NotFound = lazy(() => import('pages/Error/NotFound'));
 const Cast = lazy(() => import('./Cast'));
 const Reviews = lazy(() => import('./Review'));

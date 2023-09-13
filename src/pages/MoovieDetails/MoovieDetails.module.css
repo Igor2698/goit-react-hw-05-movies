@@ -1,0 +1,85 @@
+.MoovieDetailsTitle {
+  font-size: 36px;
+  margin: 10px 0px;
+}
+
+.MoovieDetailsScore {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.genresTitle,
+.listOfGenres,
+.overviewText,
+.MoovieDetailsTitle,
+.MoovieDetailsScore,
+.overviewTitle {
+  color: rgb(255, 255, 255);
+}
+
+.overviewText {
+  font-size: 22px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.overviewTitle {
+  margin-bottom: 5px;
+}
+
+.moovieDetailsWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  max-width: 1280px;
+  padding: 20px;
+  width: 100%;
+}
+
+.moovieDetailsimg {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
+  height: auto;
+  max-width: 100%;
+  min-width: 310px;
+}
+
+.textWrapper {
+  position: absolute;
+  left: 550px;
+  top: 55px
+}
+
+.backButton {
+  display: flex;
+  gap: 5px;
+
+  text-align: center;
+  max-width: 140px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 10px;
+
+  border-radius: 20px;
+  padding: 5px;
+  margin-bottom: 20px;
+  align-items: center;
+  transition: color 0.5s ease-in-out;
+}
+
+.backButton:hover,
+.backButton:active {
+  color: #0bb5e0;
+}
+
+.genresTitle {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.listOfGenres {
+  font-size: 22px;
+}

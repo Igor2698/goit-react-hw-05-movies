@@ -6,6 +6,7 @@ import { ImagePendingView } from "components/Loader";
 import { MoovieList } from "components/MoovieList/MoovieList";
 
 import TextErrorView from "components/TextErrorView";
+import css from './Home.module.css'
 
 const Home = () => {
 
@@ -47,6 +48,7 @@ const Home = () => {
         {error && <TextErrorView message={error.message} />}
 
         {loading && <ImagePendingView />}
+        <h1 className={css.moovieListTitle}>The most popular</h1>
 
         <MoovieList newMoovies={moovies} />
     </>

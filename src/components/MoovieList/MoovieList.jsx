@@ -9,11 +9,15 @@ export const MoovieList = ({ newMoovies }) => {
 
   return (
     <>
-      <h1 className={css.moovieListTitle}>In trend today</h1>
+      
       <ul className={css.listMoovie}>
         {newMoovies.map(moovie => (
-          <li key={moovie.id}>
-            <Link to={`/moovies/${moovie.id}`} state={{ from: location }}>
+          <Link
+            key={moovie.id}
+            to={`/moovies/${moovie.id}`}
+            state={{ from: location }}
+          >
+            <li>
               <img
                 className={css.moovieListImg}
                 src={
@@ -26,8 +30,8 @@ export const MoovieList = ({ newMoovies }) => {
               <p className={css.moovieListText}>
                 {moovie.title ?? moovie.name}
               </p>
-            </Link>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     </>

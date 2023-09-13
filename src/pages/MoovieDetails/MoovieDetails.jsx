@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { getMoovieByID } from 'api';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { ImagePendingView } from 'components/Loader';
+import css from './MoovieDetails.module.css';
+import { AiOutlineLeftCircle } from 'react-icons/ai';
 
 import TextErrorView from 'components/TextErrorView';
 
@@ -39,15 +41,22 @@ const MoovieDetails = () => {
     getOneMoovie();
   }, [id, navigate]);
 
+  console.log(moovie);
+
   return (
-    <>
+    <div className={css.moovieDetailsWrapper}>
       {error && <TextErrorView message={error.message} />}
 
       {loading && <ImagePendingView />}
-      <Link to={backLinkLocationRef.current}>Back to products</Link>
+
+      <Link className={css.backButton} to={backLinkLocationRef.current}>
+        <AiOutlineLeftCircle />
+        Back to products
+      </Link>
       {moovie && (
         <>
           <img
+            className={css.moovieDetailsimg}
             src={
               moovie.poster_path
                 ? `https://image.tmdb.org/t/p/w500/${moovie.poster_path}`
@@ -56,15 +65,24 @@ const MoovieDetails = () => {
             width="400"
             alt="poster"
           />
-          <h2>{moovie.title}</h2>
-          <h3>Overview</h3>
-          <p>{moovie.overview}</p>
-          <h3>Genres</h3>
-          <ul>
-            {moovie.genres.map(genre => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
+
+          <div className={css.textWrapper}>
+            <h2 className={css.MoovieDetailsTitle}>
+              {moovie.title} (
+              {moovie.release_date && moovie.release_date.slice(0, 4)})
+            </h2>
+            <p className={css.MoovieDetailsScore}>
+              User Score:
+              {moovie.vote_average && Math.floor(moovie.vote_average * 10)}%
+            </p>
+
+            <h2 className={css.overviewTitle}>Overview:</h2>
+            <p className={css.overviewText}> {moovie.overview}</p>
+            <h3 className={css.genresTitle}>Genres: </h3>
+            <p className={css.listOfGenres}>
+              {moovie.genres.map(genre => genre.name).join(', ')}
+            </p>
+          </div>
         </>
       )}
       <h2>Additional information</h2>
@@ -77,7 +95,7 @@ const MoovieDetails = () => {
         </li>
       </ul>
       <Outlet />
-    </>
+    </div>
   );
 };
 

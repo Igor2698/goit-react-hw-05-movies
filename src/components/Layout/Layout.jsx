@@ -1,5 +1,14 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import css from './Layout.module.css';
+import styled from 'styled-components';
+
+const StyledLink = styled(NavLink)`
+  color: white;
+
+  &.active {
+    color: #0bb5e0;
+  }
+`;
 
 export const Layout = () => {
   return (
@@ -8,16 +17,22 @@ export const Layout = () => {
         <nav className={css.headerNav}>
           <ul className={css.headerList}>
             <li className={css.Item}>
-              <NavLink className={css.Link} to="/">Home</NavLink>
+              <StyledLink className={css.Link} to="/">
+                Home
+              </StyledLink>
             </li>
             <li>
-              <NavLink className={css.Link} to="moovies">Moovies</NavLink>
+              <StyledLink className={css.Link} to="moovies">
+                Moovies
+              </StyledLink>
             </li>
           </ul>
         </nav>
       </header>
       <main className={css.main}>
-        <Outlet />
+        <div className={css.mainContainer}>
+          <Outlet />
+        </div>
       </main>
     </>
   );
