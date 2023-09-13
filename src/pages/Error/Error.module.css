@@ -12,12 +12,12 @@
   animation: pulse 1s infinite;
 }
 
-p {
+.notFoundText {
   text-align: center;
   color: aliceblue;
 }
 
-img {
+.errorImg {
   display: flex;
   margin-left: auto;
   margin-right: auto;

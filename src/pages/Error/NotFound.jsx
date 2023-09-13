@@ -14,8 +14,11 @@ export const NotFound = () => {
   return (
     <div className={css.wrapper}>
       <Link to={'/'}>Return to home</Link>
-      <p>Unfortunately, an error occurred. Please try again later</p>
+      <p className={css.notFoundText}>
+        Unfortunately, an error occurred. Please try again later
+      </p>
       <img
+        className={css.errorImg}
         width="80%"
         height="600"
         src="https://png.pngtree.com/background/20211217/original/pngtree-system-error-background-picture-image_1599770.jpg"
