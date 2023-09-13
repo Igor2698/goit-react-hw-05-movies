@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
-import { NotFound } from 'pages/NotFound';
+import { NotFound } from 'pages/Error/NotFound';
 import { Home } from 'pages/Home';
 import { Moovies } from 'pages/Moovies';
 import { MoovieDetails } from './MoovieDetails';

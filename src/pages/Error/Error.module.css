@@ -1,0 +1,24 @@
+@keyframes pulse {
+  0%,
+  100% {
+    background-color: red;
+  }
+  50% {
+    background-color: #6f2514;
+  }
+}
+
+.bodyBackground {
+  animation: pulse 1s infinite;
+}
+
+p {
+  text-align: center;
+  color: aliceblue;
+}
+
+img {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
