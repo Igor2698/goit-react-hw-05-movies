@@ -14,7 +14,9 @@
 .overviewText,
 .MoovieDetailsTitle,
 .MoovieDetailsScore,
-.overviewTitle {
+.overviewTitle,
+.links,
+.linksTitle {
   color: rgb(255, 255, 255);
 }
 
@@ -44,12 +46,13 @@
   height: auto;
   max-width: 100%;
   min-width: 310px;
+  margin-bottom: 15px;
 }
 
 .textWrapper {
   position: absolute;
   left: 550px;
-  top: 55px
+  top: 55px;
 }
 
 .backButton {
@@ -82,4 +85,35 @@
 
 .listOfGenres {
   font-size: 22px;
+  margin-bottom: 70px;
+}
+
+.links {
+  font-size: 22px;
+  text-decoration: none;
+
+  /* background-color: #007bff; Изменение цвsета фона на синий */
+}
+
+.linksTitle {
+  margin-bottom: 15px;
+}
+
+.linksButton {
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  padding: 10px 20px;
+  background-color: black;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.linksButton:hover {
+  background-color: #0bb5e0;
+}
+
+.linkslist {
+  display: flex;
+  gap: 20px;
 }

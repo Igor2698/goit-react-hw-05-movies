@@ -82,18 +82,27 @@ const MoovieDetails = () => {
             <p className={css.listOfGenres}>
               {moovie.genres.map(genre => genre.name).join(', ')}
             </p>
+            <h2 className={css.linksTitle}>Additional information</h2>
+            <ul className={css.linkslist}>
+              <li>
+                <button className={css.linksButton} type="button">
+                  <Link className={css.links} to="cast">
+                    Cast
+                  </Link>{' '}
+                </button>
+              </li>
+              <li>
+                <button className={css.linksButton} type="button">
+                  <Link className={css.links} to="reviews">
+                    Reviews
+                  </Link>
+                </button>
+              </li>
+            </ul>
           </div>
         </>
       )}
-      <h2>Additional information</h2>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+
       <Outlet />
     </div>
   );

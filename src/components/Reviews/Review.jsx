@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'api';
-
+import css from './Review.module.css';
 import { ImagePendingView } from 'components/Loader';
 
 import TextErrorView from 'components/TextErrorView';
@@ -35,9 +35,9 @@ const Reviews = () => {
       {reviews.length > 0 ? (
         reviews.map(review => (
           <ul key={review.id}>
-            <li>
-              <p>Author: {review.author}</p>
-              <p>{review.content}</p>
+            <li className={css.reviewItem}>
+              <p className={css.author}>Author: {review.author}</p>
+              <p className={css.content}>{review.content}</p>
             </li>
           </ul>
         ))

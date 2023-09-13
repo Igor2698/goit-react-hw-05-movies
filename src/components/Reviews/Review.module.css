@@ -1,0 +1,25 @@
+.author,
+.content {
+  color: rgb(255, 255, 255);
+}
+
+.content {
+  font-size: 18px;
+}
+
+.author {
+    font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.reviewItem {
+  border: 1px solid #ccc; /* Граница */
+  background-color: black; /* Фон */
+  padding: 10px; /* Внутренний отступ для контента */
+  margin-bottom: 10px;
+  transition: background-color 1s ease-in-out;
+}
+
+.reviewItem:hover {
+  background-color: #1b2b30;
+}
