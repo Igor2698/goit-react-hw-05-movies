@@ -24,7 +24,7 @@ export const getMoovies = async () => {
 };
 
 
-export const getMoovieByName = async mooveId => {
+export const getMoovieByID = async mooveId => {
 
 
     try {
@@ -44,11 +44,11 @@ export const getMoovieByName = async mooveId => {
 
 
 
-export const getCast = async mooveId => {
+export const getCast = async moovieId => {
 
 
     try {
-        const response = await axios.get(`movie/${mooveId}/credits`, {
+        const response = await axios.get(`movie/${moovieId}/credits`, {
             params: {
                 api_key: apiKey,
                 page: 1,
@@ -63,11 +63,11 @@ export const getCast = async mooveId => {
 }
 
 
-export const getReviews = async mooveId => {
+export const getReviews = async moovieId => {
 
 
     try {
-        const response = await axios.get(`movie/${mooveId}/reviews`, {
+        const response = await axios.get(`movie/${moovieId}/reviews`, {
             params: {
                 api_key: apiKey,
 
@@ -80,6 +80,24 @@ export const getReviews = async mooveId => {
     }
 }
 
+
+
+export const getMoovieByName = async moovieName => {
+
+
+    try {
+        const response = await axios.get(`search/movie?query=${moovieName}`, {
+            params: {
+                api_key: apiKey,
+
+            },
+        });
+        return response.data;
+    } catch (error) {
+        console.error('Ошибка при выполнении запроса:', error);
+        throw error;
+    }
+}
 
 
 

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getMoovieByName } from 'api';
+import { getMoovieByID } from 'api';
 import { useNavigate, Link, Outlet } from 'react-router-dom';
 
 const defaultImg =
@@ -14,7 +14,7 @@ export const MoovieDetails = () => {
   useEffect(() => {
     async function getOneMoovie() {
       try {
-        const response = await getMoovieByName(id);
+        const response = await getMoovieByID(id);
 
         setMoovie(response);
       } catch (error) {
