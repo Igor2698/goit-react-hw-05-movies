@@ -1,0 +1,14 @@
+.listOfCasts {
+  display: grid;
+  row-gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.characterText,
+.name {
+  color: aliceblue;
+  text-align: center;
+  font-size: 18px;
+}
+
+

@@ -85,18 +85,14 @@ const MoovieDetails = () => {
             <h2 className={css.linksTitle}>Additional information</h2>
             <ul className={css.linkslist}>
               <li>
-                <button className={css.linksButton} type="button">
-                  <Link className={css.links} to="cast">
-                    Cast
-                  </Link>{' '}
-                </button>
+                <Link className={css.links} to="cast">
+                  Cast
+                </Link>{' '}
               </li>
               <li>
-                <button className={css.linksButton} type="button">
-                  <Link className={css.links} to="reviews">
-                    Reviews
-                  </Link>
-                </button>
+                <Link className={css.links} to="reviews">
+                  Reviews
+                </Link>
               </li>
             </ul>
           </div>

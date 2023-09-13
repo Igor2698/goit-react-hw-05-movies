@@ -2,11 +2,11 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getCast } from 'api';
 import { ImagePendingView } from 'components/Loader';
-
+import css from './Cast.module.css';
 import TextErrorView from 'components/TextErrorView';
 
 const defaultImg =
-  'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700';
+  'https://koshka.top/uploads/posts/2021-12/thumbs/1638771511_1-koshka-top-p-milogo-kotika-v-shapochke-1.jpg';
 
 const Cast = () => {
   const [loading, setLoading] = useState(false);
@@ -37,15 +37,13 @@ const Cast = () => {
       {loading && <ImagePendingView />}
 
       {actors && (
-        <ul>
+        <ul className={css.listOfCasts}>
           {actors.slice(0, 30).map(actor => {
             return (
               <li key={actor.id}>
-                <p>Character: {actor.character}</p>
-                <p>Name: {actor.name}</p>
                 <img
-                  width="100"
-                  height="150"
+                  width="200"
+                  height="300"
                   src={
                     actor.profile_path
                       ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
@@ -53,6 +51,10 @@ const Cast = () => {
                   }
                   alt="actor"
                 />
+                <p className={css.characterText}>
+                  Character: {actor.character}
+                </p>
+                <p className={css.name}>Name: {actor.name}</p>
               </li>
             );
           })}

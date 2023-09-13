@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import css from './Form.module.css';
 
 export const Form = ({ updateQueryString }) => {
   const [moovie, setMoovie] = useState();
@@ -14,7 +15,12 @@ export const Form = ({ updateQueryString }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="moovie" onChange={handleMoovieChange} />
+      <input
+        placeholder="enter movie title"
+        type="text"
+        name="moovie"
+        onChange={handleMoovieChange}
+      />
       <button type="submit">Search</button>
     </form>
   );

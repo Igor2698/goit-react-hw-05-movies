@@ -2,7 +2,7 @@
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoovieByName } from 'api';
-import { Form } from '../../components/Form'
+import { Form } from '../../components/Form/Form'
 import { ImagePendingView } from 'components/Loader';
 import { MoovieList } from 'components/MoovieList/MoovieList';
 import TextErrorView from 'components/TextErrorView';
