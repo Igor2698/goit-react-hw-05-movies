@@ -33,7 +33,7 @@ const MoovieDetails = () => {
         setLoading(false);
       } catch (error) {
         setError(error);
-        navigate('/*', { replace: true });
+        navigate('/', { replace: true });
         console.log(error);
       }
     }
