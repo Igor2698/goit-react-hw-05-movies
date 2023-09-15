@@ -35,7 +35,9 @@ const MoovieDetails = () => {
         setMoovie(response);
         setLoading(false);
       } catch (error) {
-        toast.warning(`We are sorry but you have reached the end of images`);
+        toast.warning(
+          `We are sorry but we dont have information about this film`
+        );
         setError(error.message);
         navigate('/', { replace: true });
         console.log(error);
