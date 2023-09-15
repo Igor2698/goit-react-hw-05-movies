@@ -25,8 +25,10 @@ const Home = () => {
 
                 const response = await getMoovies();
 
+
                 setMoovies(response.results)
                 setLoading(false);
+                console.log(response);
 
 
             } catch (error) {

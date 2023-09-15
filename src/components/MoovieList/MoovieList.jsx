@@ -10,25 +10,19 @@ export const MoovieList = ({ newMoovies }) => {
   return (
     <>
       <ul className={css.listMoovie}>
-        {newMoovies.map(moovie => (
-          <Link
-            key={moovie.id}
-            to={`/moovies/${moovie.id}`}
-            state={{ from: location }}
-          >
+        {newMoovies.map(({ id, poster_path, name: movieName, title }) => (
+          <Link key={id} to={`/moovies/${id}`} state={{ from: location }}>
             <li className={css.moovieItem}>
               <img
                 className={css.moovieListImg}
                 src={
-                  moovie.poster_path
-                    ? `https://image.tmdb.org/t/p/w500/${moovie.poster_path}`
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500/${poster_path}`
                     : defaultImg
                 }
                 alt="poster"
               />
-              <p className={css.moovieListText}>
-                {moovie.title ?? moovie.name}
-              </p>
+              <p className={css.moovieListText}>{title ?? movieName}</p>
             </li>
           </Link>
         ))}
