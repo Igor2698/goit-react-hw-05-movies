@@ -1,6 +1,8 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import css from './Layout.module.css';
 import styled from 'styled-components';
+import { Suspense } from 'react';
+import { ImagePendingView } from 'components/Loader';
 
 const StyledLink = styled(NavLink)`
   color: white;
@@ -31,7 +33,9 @@ export const Layout = () => {
       </header>
       <main className={css.main}>
         <div className={css.mainContainer}>
-          <Outlet />
+          <Suspense fallback={<ImagePendingView />}>
+            <Outlet />
+          </Suspense>
         </div>
       </main>
     </>

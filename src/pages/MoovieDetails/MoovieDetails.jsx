@@ -5,6 +5,9 @@ import { useNavigate, Link, Outlet } from 'react-router-dom';
 import { ImagePendingView } from 'components/Loader';
 import css from './MoovieDetails.module.css';
 import { AiOutlineLeftCircle } from 'react-icons/ai';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import { Suspense } from 'react';
 
 import TextErrorView from 'components/TextErrorView';
 
@@ -32,7 +35,8 @@ const MoovieDetails = () => {
         setMoovie(response);
         setLoading(false);
       } catch (error) {
-        setError(error);
+        toast.warning(`We are sorry but you have reached the end of images`);
+        setError(error.message);
         navigate('/', { replace: true });
         console.log(error);
       }
@@ -96,8 +100,9 @@ const MoovieDetails = () => {
           </div>
         </>
       )}
-
-      <Outlet />
+      <Suspense fallback={<ImagePendingView />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

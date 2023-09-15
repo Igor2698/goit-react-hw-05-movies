@@ -1,8 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Layout } from './Layout/Layout';
+import { ToastContainer } from 'react-toastify';
 
 const MoovieDetails = lazy(() => import('pages/MoovieDetails/MoovieDetails'));
+
 const Moovies = lazy(() => import('pages/Moovies/Moovies'));
 const NotFound = lazy(() => import('pages/Error/NotFound'));
 const Cast = lazy(() => import('./Cast/Cast'));
@@ -10,7 +12,9 @@ const Reviews = lazy(() => import('./Reviews/Review'));
 const Home = lazy(() => import('pages/Home/Home'));
 export const App = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <>
+      <ToastContainer autoClose={3000} />
+
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -22,6 +26,6 @@ export const App = () => {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </Suspense>
+    </>
   );
 };
